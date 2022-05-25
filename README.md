@@ -30,9 +30,9 @@ Compile and Run
 ```
 
 ```bash
-time ./<c-file>
+time ./<name>
 #or
-./<c-file>
+./<name>
 ```
 
 
