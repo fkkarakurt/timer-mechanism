@@ -29,6 +29,14 @@ Compile and Run
   gcc -o <name> <c-file>
 ```
 
+```bash
+time ./<c-file>
+#or
+./<c-file>
+```
+
+
+
 In addition to all these, you can create the codes yourself by [following the article](https://www.makeuseof.com/author/fatih-k%C3%BC%C3%A7%C3%BCkkarakurt/).
 
 
