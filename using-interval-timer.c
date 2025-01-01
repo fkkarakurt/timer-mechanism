@@ -14,20 +14,31 @@ void timer_callback(int signum)
     printf("Signal %d caught on %li.%03li\n", signum, now.tv_sec, now.tv_usec / 1000);
 }
 
-int main()
+void setup_timer()
 {
-    unsigned int remaining = 3;
-
     struct itimerval new_timer;
-    struct itimerval old_timer;
 
     new_timer.it_value.tv_sec = 1;
     new_timer.it_value.tv_usec = 0;
     new_timer.it_interval.tv_sec = 0;
     new_timer.it_interval.tv_usec = 300 * 1000;
 
-    setitimer(ITIMER_REAL, &new_timer, &old_timer);
+    if (setitimer(ITIMER_REAL, &new_timer, NULL) == -1)
+    {
+        errorf("Failed to set timer: %s", strerror(errno));
+    }
+    else
+    {
+        infof("Timer successfully set");
+    }
+}
+
+int main()
+{
+    unsigned int remaining = 3;
+
     signal(SIGALRM, timer_callback);
+    setup_timer();
 
     while (sleep(remaining) != 0)
     {
@@ -37,8 +48,9 @@ int main()
         }
         else
         {
-            errorf("sleep error %s", strerror(errno));
+            errorf("sleep error: %s", strerror(errno));
         }
     }
+
     return 0;
 }
