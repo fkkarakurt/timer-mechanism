@@ -38,6 +38,3 @@ time ./<name>
 
 
 In addition to all these, you can create the codes yourself by [following the article](https://www.makeuseof.com/linux-timer-mechanisms/).
-
-
-[MUO](https://www.makeuseof.com/)
